@@ -6,7 +6,7 @@ Created on Jun 24, 2010
 import unittest
 from test_settings import \
 NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
-NIRVANIX_APPKEY
+NIRVANIX_APPKEY,NIRVANIX_CHILD_USER,NIRVANIX_CHILD_PASS
 
 from cloudstory.nirvanix import Nirvanix
 
@@ -20,6 +20,11 @@ class TestIMFS(unittest.TestCase):
             NIRVANIX_PASSWORD,
             NIRVANIX_APPKEY
             )
+        self.nvxb = Nirvanix(
+            NIRVANIX_CHILD_USER,
+            NIRVANIX_CHILD_PASS,
+            NIRVANIX_APPKEY
+            )
         
     def test_copy_files(self):
         action = self.nvx(
@@ -29,6 +34,8 @@ class TestIMFS(unittest.TestCase):
             destFolderPath='restXLTest'
             )
         self.assertEquals(action.content.ResponseCode._,'0')
+        
+        
         
     def test_copy_folders(self):
         action = self.nvx(
@@ -56,6 +63,19 @@ class TestIMFS(unittest.TestCase):
             pageSize='10'
             )
         self.assertEquals(action.content.ResponseCode._,'0')
+        try:
+            actionb = self.nvxb(
+                'list_folder',
+                sessionToken=self.nvxb.session_key,
+                folderPath='/restXLTest',
+                pageNumber='1',
+                pageSize='10'
+                )
+            
+            self.failIfEqual(actionb.content.ResponseCode._,'0','''We've got a threading issue ''')
+        except:
+            pass
+        
     def test_get_path_info(self):
         action = self.nvx(
             'get_path_info',
@@ -67,6 +87,16 @@ class TestIMFS(unittest.TestCase):
         self.assertEquals(action.content.GetPathInfo.ItemName._,'ipoots.png')
         self.assertEquals(action.content.GetPathInfo.IsFile._,'true')
         self.assertEquals(action.content.GetPathInfo.FileType._,'Image')
+        try:
+            actionb = self.nvxb(
+                'get_path_info',
+                sessionToken=self.nvxb.session_key,
+                itemPath='/ipoots.png',
+                showMetadata='true',
+                )
+            self.failIfEqual(actionb.content.ResponseCode._,'0','''We've got a threading issue ''')
+        except:
+            pass
         
     def test_move_files(self):
         action = self.nvx(
