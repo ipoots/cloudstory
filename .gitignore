@@ -1,0 +1,6 @@
+.settings/
+*.pyc
+*.pyo
+*.pydevproject
+*.project
+*test_settings.py
