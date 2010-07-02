@@ -6,7 +6,9 @@ Created on Jun 29, 2010
 import unittest
 from test_settings import\
 CLOUDFILES_AUTH_KEY,CLOUDFILES_AUTH_USER,\
-CLOUDFILES_CONTAINER,CLOUDFILES_NEW_CONTAINER
+CLOUDFILES_CONTAINER,CLOUDFILES_NEW_CONTAINER,\
+CLOUDFILES_B_AUTH_USER,CLOUDFILES_B_AUTH_KEY 
+
 
 from cloudstory.cloudfiles import CloudFiles
 
@@ -19,6 +21,10 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             CLOUDFILES_AUTH_USER,
             CLOUDFILES_AUTH_KEY
             )
+        self.cfb = CloudFiles(
+            CLOUDFILES_B_AUTH_USER,
+            CLOUDFILES_B_AUTH_KEY
+            ) 
 
     def testListContainers(self):
         action = self.cf(
@@ -29,6 +35,16 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             )
         self.assertEquals(action.response.get('status'),'200')
         self.failIf(not isinstance(action.content, list), 'Content should be a list')
+        actionb = self.cfb(
+            'list_containers',
+            auth_token=self.cfb.auth_token,
+            request_url=self.cfb.storage_url,
+            format='json'
+            )
+
+        
+        self.failIfEqual(action.response, actionb.response, '''We've got some security issues::Response''')
+        self.failIfEqual(action.content, actionb.content, '''We've got some security issues::Content''')
         
     def testAccountInfo(self):
         action = self.cf(
