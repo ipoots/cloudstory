@@ -40,3 +40,8 @@ class CloudFiles(RestXLer):
     container_info = ContainerInfo
     list_container_objects = ListContainerObjects
     create_container = CreateContainer
+    delete_container = DeleteContainer
+    delete_object = DeleteObject
+    object_metadata_headers = ObjectMetaHeaders
+    object_info = ObjectInfo
+    create_meta_data = CreateMetadata

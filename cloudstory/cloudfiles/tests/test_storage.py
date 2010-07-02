@@ -106,10 +106,20 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             
             format='json'
             )
-        self.assertEquals(action.response.get('status'),'202')
+        self.assertEquals(action.response.get('status'),'201')
         self.failIf(
             CLOUDFILES_CONTAINER in actionb.response.get('content-location'),
             'The CLOUDFILES_CONTAINER is in the response of the list_containers')
+    
+    def testXDeleteContainer(self):
+        action = self.cf(
+            'delete_container',
+            auth_token=self.cf.auth_token,
+            request_url=self.cf.storage_url,
+            request_path=CLOUDFILES_NEW_CONTAINER
+            )
+        self.assertEquals(action.response.get('status'),'204')
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

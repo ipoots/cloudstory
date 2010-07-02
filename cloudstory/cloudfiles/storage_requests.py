@@ -10,7 +10,12 @@ __all__ = [
     'AccountInfo',
     'ContainerInfo',
     'ListContainerObjects',
-    'CreateContainer'
+    'CreateContainer',
+    'DeleteContainer',
+    'DeleteObject',
+    'ObjectMetaHeaders',
+    'ObjectInfo',
+    'CreateMetadata'
     ]
 
 class StorageAccountServicesReq(DynamicAuthTokenReq):
@@ -41,3 +46,23 @@ class CreateContainer(DynamicAuthTokenReq):
         method = 'PUT'
         response_type = 'raw'
         
+class DeleteContainer(DynamicAuthTokenReq):
+    class Meta(DynamicAuthTokenReq.Meta):
+        method = 'DELETE'
+        response_type = 'raw'
+        
+class DeleteObject(DeleteContainer):
+    pass
+
+class ObjectMetaHeaders(AccountInfo):
+    pass        
+
+class ObjectInfo(AccountInfo):
+    class Meta(AccountInfo.Meta):
+        method = 'GET'
+        response_type = 'raw'
+        
+class CreateMetadata(AccountInfo):
+    class Meta(AccountInfo.Meta):
+        method = 'POST'
+        response_type = 'raw'
