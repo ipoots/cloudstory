@@ -11,7 +11,6 @@ CLOUDFILES_CONTAINER,CLOUDFILES_NEW_CONTAINER,\
 CLOUDFILES_B_AUTH_USER,CLOUDFILES_B_AUTH_KEY,\
 CLOUDFILES_DELETE_OBJECT,CLOUDFILES_DELETE_OBJECT_B 
 
-
 class CloudFilesAuthTestCase(unittest.TestCase):
     """Nirvanix Auth Test Case"""
 
@@ -155,6 +154,14 @@ class CloudFilesAuthTestCase(unittest.TestCase):
         self.failIf(
             action.response.get('etag') == actionb.response.get('etag'),
             'It is looking at the same file check your delete object settings.')
+    def testObjectInfo(self):
+        action = self.cf(
+            'object_info',
+            auth_token=self.cf.auth_token,
+            request_url=self.cf.storage_url,
+            request_path='%s/%s' % (CLOUDFILES_CONTAINER,CLOUDFILES_DELETE_OBJECT)
+            )
+        self.assertEquals(action.response.get('status'),'200')
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
