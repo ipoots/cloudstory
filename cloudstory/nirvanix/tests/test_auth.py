@@ -5,18 +5,17 @@ Created on Apr 3, 2010
 @author: brianjinwright
 '''
 import unittest
+from cloudstory import get_driver
 from test_settings import \
 NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
 NIRVANIX_APPKEY
-
-from cloudstory.nirvanix import Nirvanix
-
 
 class NirvanixAuthTestCase(unittest.TestCase):
     """Nirvanix Auth Test Case"""
 
     def setUp(self):
-        self.nvx = Nirvanix(
+        c_driver = get_driver('nirvanix')
+        self.nvx = c_driver(    
             NIRVANIX_USERNAME,
             NIRVANIX_PASSWORD,
             NIRVANIX_APPKEY

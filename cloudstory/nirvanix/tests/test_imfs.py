@@ -4,6 +4,7 @@ Created on Jun 24, 2010
 @author: brianjinwright
 '''
 import unittest
+from cloudstory import get_driver
 from test_settings import \
 NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
 NIRVANIX_APPKEY,NIRVANIX_CHILD_USER,NIRVANIX_CHILD_PASS
@@ -15,12 +16,13 @@ class TestIMFS(unittest.TestCase):
 
 
     def setUp(self):
-        self.nvx = Nirvanix(
+        c_driver = get_driver('nirvanix')
+        self.nvx = c_driver(    
             NIRVANIX_USERNAME,
             NIRVANIX_PASSWORD,
             NIRVANIX_APPKEY
             )
-        self.nvxb = Nirvanix(
+        self.nvxb = c_driver(    
             NIRVANIX_CHILD_USER,
             NIRVANIX_CHILD_PASS,
             NIRVANIX_APPKEY

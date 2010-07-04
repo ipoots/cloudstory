@@ -8,14 +8,14 @@ from test_settings import \
 NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
 NIRVANIX_APPKEY
 
-from cloudstory.nirvanix import Nirvanix
+from cloudstory import get_driver
 
 
 class TestSharing(unittest.TestCase):
 
-
     def setUp(self):
-        self.nvx = Nirvanix(
+        c_driver = get_driver('nirvanix')
+        self.nvx = c_driver(    
             NIRVANIX_USERNAME,
             NIRVANIX_PASSWORD,
             NIRVANIX_APPKEY
