@@ -8,8 +8,10 @@ from restxl import request
 __all__ = [
     'CloudFilesResponseError',
     'AuthTokenReq', 
-    'DynamicAuthTokenReq'   
+    'DynamicAuthTokenReq', 
+    'StorageAccountServicesReq'  
     ]
+
 class CloudFilesResponseError(Exception):
     def __init__(self,value,error_message):
         self.value = value
@@ -30,7 +32,13 @@ class DynamicAuthTokenReq(request.DynamicRequest):
     """
     auth_token = request.CharHeader(required=True,verbose_name='X-Auth-Token')    
     
+class StorageAccountServicesReq(DynamicAuthTokenReq):
+    limit = request.CharVariable()
+    marker = request.CharVariable()
+    format = request.CharVariable()
     
+    class Meta:
+        response_type = 'json'
     
     
     

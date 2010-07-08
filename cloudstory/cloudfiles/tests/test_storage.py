@@ -5,11 +5,7 @@ Created on Jun 29, 2010
 '''
 import unittest
 from cloudstory import get_driver
-from test_settings import\
-CLOUDFILES_AUTH_KEY,CLOUDFILES_AUTH_USER,\
-CLOUDFILES_CONTAINER,CLOUDFILES_NEW_CONTAINER,\
-CLOUDFILES_B_AUTH_USER,CLOUDFILES_B_AUTH_KEY,\
-CLOUDFILES_DELETE_OBJECT,CLOUDFILES_DELETE_OBJECT_B 
+from test_settings import *
 
 class CloudFilesAuthTestCase(unittest.TestCase):
     """Nirvanix Auth Test Case"""

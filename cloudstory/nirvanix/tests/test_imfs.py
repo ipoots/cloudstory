@@ -5,9 +5,7 @@ Created on Jun 24, 2010
 '''
 import unittest
 from cloudstory import get_driver
-from test_settings import \
-NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
-NIRVANIX_APPKEY,NIRVANIX_CHILD_USER,NIRVANIX_CHILD_PASS
+from test_settings import *
 
 from cloudstory.nirvanix import Nirvanix
 

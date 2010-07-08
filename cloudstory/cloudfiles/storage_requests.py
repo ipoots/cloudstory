@@ -18,14 +18,6 @@ __all__ = [
     'CreateMetadata'
     ]
 
-class StorageAccountServicesReq(DynamicAuthTokenReq):
-    limit = request.CharVariable()
-    marker = request.CharVariable()
-    format = request.CharVariable()
-    
-    class Meta(DynamicAuthTokenReq.Meta):
-        response_type = 'json'
-        
 class ListContainers(StorageAccountServicesReq):
     class Meta(StorageAccountServicesReq.Meta):
         method = 'GET'

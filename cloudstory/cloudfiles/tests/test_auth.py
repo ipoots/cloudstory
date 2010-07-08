@@ -6,8 +6,7 @@ Created on Jun 28, 2010
 '''
 import unittest
 from cloudstory import get_driver
-from test_settings import \
-CLOUDFILES_AUTH_KEY,CLOUDFILES_AUTH_USER
+from test_settings import *
 
 
 class CloudFilesAuthTestCase(unittest.TestCase):

@@ -4,9 +4,7 @@ Created on Jun 27, 2010
 @author: brianjinwright
 '''
 import unittest
-from test_settings import \
-NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
-NIRVANIX_APPKEY
+from test_settings import *
 
 from cloudstory import get_driver
 

@@ -2,6 +2,7 @@
 from restxl.client import RestXLer
 from auth_requests import *
 from storage_requests import *
+from cdn_requests import *
 class CloudFiles(RestXLer):
     
     def __init__(self,
@@ -11,9 +12,6 @@ class CloudFiles(RestXLer):
         self.auth_user = auth_user
         self.auth_key = auth_key
         self.auth_token = auth_token
-        
-        
-
         tt = self.login()
         
 #            if tt.ResponseCode._ == '0':
@@ -34,7 +32,7 @@ class CloudFiles(RestXLer):
         self.storage_token = tt.response.get('x-storage-token')
         self.storage_url = tt.response.get('x-storage-url')   
         return tt
-    
+    #Storage Service Requests
     list_containers = ListContainers
     account_info = AccountInfo
     container_info = ContainerInfo
@@ -45,3 +43,8 @@ class CloudFiles(RestXLer):
     object_metadata_headers = ObjectMetaHeaders
     object_info = ObjectInfo
     create_meta_data = CreateMetadata
+    #CDN Service Requests
+    get_cdn_containers = GetCDNContainers
+    get_cdn_container_info = GetCDNContainerInfo
+    initialize_cdn_container = IntializeCDNContainer
+    edit_cdn_container_info = EditCDNContainerInfo

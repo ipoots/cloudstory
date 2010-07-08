@@ -6,9 +6,7 @@ Created on Apr 3, 2010
 '''
 import unittest
 from cloudstory import get_driver
-from test_settings import \
-NIRVANIX_USERNAME, NIRVANIX_PASSWORD,\
-NIRVANIX_APPKEY
+from test_settings import *
 
 class NirvanixAuthTestCase(unittest.TestCase):
     """Nirvanix Auth Test Case"""
