@@ -14,8 +14,7 @@ class GetCDNContainers(DynamicAuthTokenReq):
     marker = request.CharVariable()
     format = request.CharVariable()
     class Meta:
-        #TODO: Figure out why JSON and XML doesn't validate
-        response_type = 'raw'
+        response_type = 'json'
         method = 'GET'
         
 
@@ -29,6 +28,7 @@ class IntializeCDNContainer(DynamicAuthTokenReq):
     log_retention = request.CharHeader(verbose_name='X-Log-Retention')
     class Meta(DynamicAuthTokenReq.Meta):
         method = 'PUT'
+        response_type = 'raw'
         
 class EditCDNContainerInfo(IntializeCDNContainer):
     cdn_enabled = request.CharHeader(verbose_name='X-CDN-Enabled')

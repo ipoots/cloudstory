@@ -4,7 +4,13 @@ Created on Jun 27, 2010
 @author: brianjinwright
 '''
 from restxl import request
-
+try:
+    import json
+except:
+    try:
+        import simplejson as json
+    except:
+        raise ImportError('json or simplejson must be installed')
 __all__ = [
     'CloudFilesResponseError',
     'AuthTokenReq', 
@@ -19,7 +25,8 @@ class CloudFilesResponseError(Exception):
     def __str__(self):
         return repr("Response Code: %s Error Message: %s" % \
                     (self.value, self.error_message))
-       
+
+
 class AuthTokenReq(request.Request):
     """
     CloudFiles Auth Token Request
