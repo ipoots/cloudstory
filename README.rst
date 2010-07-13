@@ -18,7 +18,7 @@ Authentication, Storage, and CDN methods are included.
 
 DIOMEDE
 ~~~~~~~
-Coming Soon!! (3rd)
+Authentication (partial) included (3rd)
 
 AMAZON S3
 ~~~~~~~~~
