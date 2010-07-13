@@ -1,9 +1,10 @@
 from nirvanix import Nirvanix
 from cloudfiles import CloudFiles
-
+from diomede import Diomede
 DRIVERS = {
     'nirvanix':Nirvanix,
-    'cloudfiles':CloudFiles
+    'cloudfiles':CloudFiles,
+    'diomede':Diomede
     }
 
 class DriverException(Exception):
