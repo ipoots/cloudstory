@@ -4,13 +4,6 @@ Created on Jun 27, 2010
 @author: brianjinwright
 '''
 from restxl import request
-try:
-    import json
-except:
-    try:
-        import simplejson as json
-    except:
-        raise ImportError('json or simplejson must be installed')
 __all__ = [
     'CloudFilesResponseError',
     'AuthTokenReq', 
