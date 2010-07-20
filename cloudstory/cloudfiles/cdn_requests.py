@@ -19,14 +19,15 @@ class GetCDNContainers(DynamicAuthTokenReq):
         
 
 class GetCDNContainerInfo(DynamicAuthTokenReq):
+    container = request.CharPathVariable(1,required=True)
     class Meta(DynamicAuthTokenReq.Meta):
         method = 'HEAD'
         response_type = 'raw'
         
-class IntializeCDNContainer(DynamicAuthTokenReq):
+class IntializeCDNContainer(GetCDNContainerInfo):
     ttl = request.CharHeader(verbose_name='X-TTL')
     log_retention = request.CharHeader(verbose_name='X-Log-Retention')
-    class Meta(DynamicAuthTokenReq.Meta):
+    class Meta(GetCDNContainerInfo.Meta):
         method = 'PUT'
         response_type = 'raw'
         

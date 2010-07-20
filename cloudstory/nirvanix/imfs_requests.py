@@ -14,7 +14,7 @@ class CopyFilesReq(SessionTokenReq):
     destFolderPath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/CopyFiles.ashx'
+        request_path = 'ws/IMFS/CopyFiles.ashx'
         
 class CopyFoldersReq(SessionTokenReq):
     """
@@ -24,7 +24,7 @@ class CopyFoldersReq(SessionTokenReq):
     destFolderPath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/CopyFolders.ashx'
+        request_path = 'ws/IMFS/CopyFolders.ashx'
         
 class CreateFoldersReq(SessionTokenReq):
     """
@@ -33,7 +33,7 @@ class CreateFoldersReq(SessionTokenReq):
     folderPath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/CreateFolders.ashx'
+        request_path = 'ws/IMFS/CreateFolders.ashx'
         
 class DeleteFilesReq(SessionTokenReq):
     """
@@ -42,7 +42,7 @@ class DeleteFilesReq(SessionTokenReq):
     filePath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/DeleteFiles.ashx'
+        request_path = 'ws/IMFS/DeleteFiles.ashx'
         
 class DeleteFoldersReq(SessionTokenReq):
     """
@@ -51,7 +51,7 @@ class DeleteFoldersReq(SessionTokenReq):
     folderPath = request.CharVariable(required=True)
 
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/DeleteFolders.ashx'
+        request_path = 'ws/IMFS/DeleteFolders.ashx'
         
 class GetPathInfoReq(SessionTokenReq):
     """
@@ -64,7 +64,7 @@ class GetPathInfoReq(SessionTokenReq):
     metadataOutput = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/GetPathInfo.ashx'
+        request_path = 'ws/IMFS/GetPathInfo.ashx'
         
 class ListFolderReq(SessionTokenReq):
     """
@@ -77,7 +77,7 @@ class ListFolderReq(SessionTokenReq):
     sortDescending = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/ListFolder.ashx'
+        request_path = 'ws/IMFS/ListFolder.ashx'
         
 class MoveFilesReq(SessionTokenReq):
     """
@@ -87,7 +87,7 @@ class MoveFilesReq(SessionTokenReq):
     destFolderPath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/MoveFiles.ashx'
+        request_path = 'ws/IMFS/MoveFiles.ashx'
         
 class MoveFoldersReq(SessionTokenReq):
     """
@@ -97,7 +97,7 @@ class MoveFoldersReq(SessionTokenReq):
     destFolderPath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/MoveFolders.ashx'
+        request_path = 'ws/IMFS/MoveFolders.ashx'
      
 class RenameFileReq(SessionTokenReq):
     """
@@ -107,7 +107,7 @@ class RenameFileReq(SessionTokenReq):
     newFileName = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/RenameFile.ashx'
+        request_path = 'ws/IMFS/RenameFile.ashx'
 
 class RenameFolderReq(SessionTokenReq):
     """
@@ -117,7 +117,7 @@ class RenameFolderReq(SessionTokenReq):
     newFolderName = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/RenameFolder.ashx'
+        request_path = 'ws/IMFS/RenameFolder.ashx'
         
 class GetDownloadNodesReq(SessionTokenReq):
     """
@@ -126,7 +126,7 @@ class GetDownloadNodesReq(SessionTokenReq):
     filePath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/GetDownloadNodes.ashx'
+        request_path = 'ws/IMFS/GetDownloadNodes.ashx'
         
 class GetOptimalUrlsReq(SessionTokenReq):
     """
@@ -138,7 +138,7 @@ class GetOptimalUrlsReq(SessionTokenReq):
     ipRestricted = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/GetOptimalUrls.ashx'
+        request_path = 'ws/IMFS/GetOptimalUrls.ashx'
         
 class GetStorageNodeExtendedReq(SessionTokenReq):
     """
@@ -153,7 +153,7 @@ class GetStorageNodeExtendedReq(SessionTokenReq):
     lastByteExpiration = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/GetStorageNodeExtended.ashx'
+        request_path = 'ws/IMFS/GetStorageNodeExtended.ashx'
         
 class GetStorageNodeReq(SessionTokenReq):
     """
@@ -163,7 +163,7 @@ class GetStorageNodeReq(SessionTokenReq):
     restrictedIP = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/GetStorageNode.ashx'
+        request_path = 'ws/IMFS/GetStorageNode.ashx'
         
 class SearchFileSystemReq(SessionTokenReq):
     """
@@ -179,7 +179,7 @@ class SearchFileSystemReq(SessionTokenReq):
     fileType = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/SearchFileSystem.ashx'
+        request_path = 'ws/IMFS/SearchFileSystem.ashx'
         
 class SideloadReq(SessionTokenReq):
     """
@@ -191,5 +191,5 @@ class SideloadReq(SessionTokenReq):
     fileOverwrite = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/IMFS/Sideload.ashx'
+        request_path = 'ws/IMFS/Sideload.ashx'
         

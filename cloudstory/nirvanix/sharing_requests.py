@@ -21,7 +21,7 @@ class ListHostedItemsReq(SessionTokenReq):
     pageSize = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Sharing/ListHostedItems.ashx'
+        request_path = 'ws/Sharing/ListHostedItems.ashx'
         
 class CreateHostedItemReq(SessionTokenReq):
     """
@@ -30,7 +30,7 @@ class CreateHostedItemReq(SessionTokenReq):
     sharePath = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Sharing/CreateHostedItem.ashx'
+        request_path = 'ws/Sharing/CreateHostedItem.ashx'
         
 class RemoveHostedItemReq(CreateHostedItemReq):
     """
@@ -38,5 +38,5 @@ class RemoveHostedItemReq(CreateHostedItemReq):
     """
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Sharing/RemoveHostedItem.ashx'
+        request_path = 'ws/Sharing/RemoveHostedItem.ashx'
 

@@ -17,12 +17,12 @@ class TransferReq(request.Request):
     class Meta(request.Request.Meta):
         request_url = 'https://rest.diomedestorage.com/1.1/Transfer.svc/'
         
-class DynamicServiceReq(request.DynamicRequest):
-    class Meta(request.DynamicRequest.Meta):
+class DynamicServiceReq(request.Request):
+    class Meta(request.Request.Meta):
         request_url = 'https://rest.diomedestorage.com/1.1/Service.svc/'
         
-class DynamicTransferReq(request.DynamicRequest):
-    class Meta(request.DynamicRequest.Meta):
+class DynamicTransferReq(request.Request):
+    class Meta(request.Request.Meta):
         request_url = 'https://rest.diomedestorage.com/1.1/Transfer.svc/'
         
 

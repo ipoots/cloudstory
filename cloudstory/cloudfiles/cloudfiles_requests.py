@@ -26,7 +26,7 @@ class AuthTokenReq(request.Request):
     """
     auth_token = request.CharHeader(required=True,verbose_name='X-Auth-Token')
     
-class DynamicAuthTokenReq(request.DynamicRequest):
+class DynamicAuthTokenReq(request.Request):
     """
     CloudFiles Auth Token Request
     """
@@ -36,6 +36,7 @@ class StorageAccountServicesReq(DynamicAuthTokenReq):
     limit = request.CharVariable()
     marker = request.CharVariable()
     format = request.CharVariable()
+    
     
     class Meta:
         response_type = 'json'

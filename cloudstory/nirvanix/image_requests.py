@@ -21,7 +21,7 @@ class ResizeReq(SessionTokenReq):
     callbackURL = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Image/Resize.ashx'
+        request_path = 'ws/Image/Resize.ashx'
         
 class RotateFlipReq(SessionTokenReq):
     """
@@ -34,5 +34,5 @@ class RotateFlipReq(SessionTokenReq):
     callbackURL = request.CharVariable()
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Image/RotateFlip.ashx'
+        request_path = 'ws/Image/RotateFlip.ashx'
         

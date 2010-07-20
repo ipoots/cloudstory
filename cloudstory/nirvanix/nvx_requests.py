@@ -36,44 +36,10 @@ class NirvanixResponseError(Exception):
         return repr("Response Code: %s Error Message: %s" % \
                     (self.value, self.error_message))
         
-class NVXRequest(request.Request):
-    def rest_request(self):
-        
-        method = getattr(self.Meta, 'method','GET')
-         
-        response_type = getattr(self.Meta, 'response_type','xml')
-        if not hasattr(self.Meta, 'request_url'):
-            raise request.RestXLRequestError('You must have a request url in the Meta class.')
-        
-        request_url = getattr(self.Meta, 'request_url') + getattr(self.Meta, 'request_path', '')
-        if len(self._urlvars) != 0:
-            body = urlencode(self._urlvars)
-            if method == 'GET': 
-                request_url = '%s?%s' %(request_url,body)
-                body = None
-        else:
-            body = None
-        headers = getattr(self, '_headers',{})
-        h = httplib2.Http()
-        resp, content = h.request(request_url, method=method, body=body,headers=headers)
-        
-        if response_type == 'xml':
-            nd = simplexmlapi.loads(content)
-        if response_type == 'json':
-            nd = json.loads(content)
-        if response_type == 'html':
-            nd = BeautifulSoup(content)
-        if response_type == 'raw':
-            nd = content
-        if nd.ResponseCode._ != '0':
-            raise NirvanixResponseError(
-                nd.ResponseCode._,
-                nd.ErrorMessage._)
-            
-        return request.RestXLResponse(resp,nd)
-    
+class NVXRequest(request.Request):    
     class Meta(request.Request.Meta):
         request_url = 'https://services.nirvanix.com'
+        response_type = 'xml'
     
 class SessionTokenReq(NVXRequest):
     """

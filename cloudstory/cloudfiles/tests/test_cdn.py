@@ -47,7 +47,7 @@ class CloudFilesCDNTestCase(unittest.TestCase):
             'get_cdn_container_info',
             auth_token=self.cf.auth_token,
             request_url=self.cf.cdn_management_url,
-            request_path=CLOUDFILES_CONTAINER,
+            container=CLOUDFILES_CONTAINER,
             format='json'
             )
         
@@ -59,7 +59,7 @@ class CloudFilesCDNTestCase(unittest.TestCase):
             'initialize_cdn_container',
             auth_token=self.cf.auth_token,
             request_url=self.cf.cdn_management_url,
-            request_path=CLOUDFILES_CONTAINER,
+            container=CLOUDFILES_CONTAINER,
             )
         self.assertEquals(action.response.get('status'),'202')
         
@@ -68,7 +68,7 @@ class CloudFilesCDNTestCase(unittest.TestCase):
             'edit_cdn_container_info',
             auth_token=self.cf.auth_token,
             request_url=self.cf.cdn_management_url,
-            request_path=CLOUDFILES_CONTAINER,
+            container=CLOUDFILES_CONTAINER,
             cdn_enabled='False'
             )
         self.assertEquals(action.response.get('status'),'202')

@@ -28,33 +28,34 @@ class AccountInfo(DynamicAuthTokenReq):
         response_type = 'raw'
         
 class ContainerInfo(AccountInfo):
-    pass
+    container = request.CharPathVariable(1,required=True)
 
 class ListContainerObjects(ListContainers):
-    pass
+    container = request.CharPathVariable(1,required=True)
 
-class CreateContainer(DynamicAuthTokenReq):
-    class Meta(DynamicAuthTokenReq.Meta):
+
+class CreateContainer(ContainerInfo):
+    class Meta(ContainerInfo.Meta):
         method = 'PUT'
         response_type = 'raw'
         
-class DeleteContainer(DynamicAuthTokenReq):
-    class Meta(DynamicAuthTokenReq.Meta):
+class DeleteContainer(ContainerInfo):
+    class Meta(ContainerInfo.Meta):
         method = 'DELETE'
         response_type = 'raw'
         
 class DeleteObject(DeleteContainer):
-    pass
+    cf_object = request.CharPathVariable(2,required=True)
 
 class ObjectMetaHeaders(AccountInfo):
-    pass        
+    container = request.CharPathVariable(1,required=True)
+    cf_object = request.CharPathVariable(2,required=True)
 
-class ObjectInfo(AccountInfo):
-    class Meta(AccountInfo.Meta):
+class ObjectInfo(ObjectMetaHeaders):
+    class Meta(ObjectMetaHeaders.Meta):
         method = 'GET'
-        response_type = 'raw'
         
-class CreateMetadata(AccountInfo):
-    class Meta(AccountInfo.Meta):
+class CreateMetadata(ObjectMetaHeaders):
+    class Meta(ObjectMetaHeaders.Meta):
         method = 'POST'
-        response_type = 'raw'
+        

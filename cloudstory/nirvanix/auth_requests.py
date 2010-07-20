@@ -29,7 +29,7 @@ class LoginReq(BaseAuthReq):
     password = request.CharVariable(required=True)
     
     class Meta(BaseAuthReq.Meta):
-        request_path = '/ws/Authentication/Login.ashx'
+        request_path = 'ws/Authentication/Login.ashx'
         
 class LoginProxyReq(LoginReq):
     """
@@ -38,7 +38,7 @@ class LoginProxyReq(LoginReq):
     consumerIP = request.CharVariable(required=True)
     
     class Meta(LoginReq.Meta):
-        request_path = '/ws/Authentication/LoginProxy.ashx'
+        request_path = 'ws/Authentication/LoginProxy.ashx'
         
         
 class LogoutReq(SessionTokenReq):
@@ -46,7 +46,7 @@ class LogoutReq(SessionTokenReq):
     Nirvanix Logout Request
     """
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Authentication/Logout.ashx'
+        request_path = 'ws/Authentication/Logout.ashx'
         
 class ChangePasswordReq(BaseAuthReq):
     """
@@ -56,12 +56,12 @@ class ChangePasswordReq(BaseAuthReq):
     newPassword = request.CharVariable(required=True)
     
     class Meta(BaseAuthReq.Meta):
-        request_path = '/ws/Authentication/ChangePassword.ashx'
+        request_path = 'ws/Authentication/ChangePassword.ashx'
         
 class SetChildAccountPasswordReq(LoginReq):
     childAccountUsername = request.CharVariable(required=True)
     childAccountPassword = request.CharVariable(required=True)
     
     class Meta(LoginReq.Meta):
-        request_path = '/ws/Authentication/SetChildAccountPassword.ashx'
+        request_path = 'ws/Authentication/SetChildAccountPassword.ashx'
         

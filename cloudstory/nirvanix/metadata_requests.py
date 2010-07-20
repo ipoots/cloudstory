@@ -25,7 +25,7 @@ class DeleteAllMetadataReq(SessionTokenReq):
     path = request.CharVariable(required=True)
     
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Metadata/DeleteAllMetadata.ashx'
+        request_path = 'ws/Metadata/DeleteAllMetadata.ashx'
         
 class DeleteMetadataReq(DeleteAllMetadataReq):
     """
@@ -34,7 +34,7 @@ class DeleteMetadataReq(DeleteAllMetadataReq):
     metadata = request.CharVariable(required=True)
     
     class Meta(DeleteAllMetadataReq.Meta):
-        request_path = '/ws/Metadata/DeleteMetadata.ashx'
+        request_path = 'ws/Metadata/DeleteMetadata.ashx'
         
 class GetMetadataReq(DeleteAllMetadataReq):
     """
@@ -42,7 +42,7 @@ class GetMetadataReq(DeleteAllMetadataReq):
     """
     
     class Meta(DeleteAllMetadataReq.Meta):
-        request_path = '/ws/Metadata/GetMetadata.ashx'
+        request_path = 'ws/Metadata/GetMetadata.ashx'
         
 class SetMetadataReq(DeleteMetadataReq):
     """
@@ -50,7 +50,7 @@ class SetMetadataReq(DeleteMetadataReq):
     """
     
     class Meta(DeleteMetadataReq.Meta):
-        request_path = '/ws/Metadata/SetMetadata.ashx'
+        request_path = 'ws/Metadata/SetMetadata.ashx'
         
 class DeleteAllTagsReq(DeleteAllMetadataReq):
     """
@@ -58,7 +58,7 @@ class DeleteAllTagsReq(DeleteAllMetadataReq):
     """
     
     class Meta(DeleteAllMetadataReq.Meta):
-        request_path = '/ws/Metadata/DeleteAllTags.ashx'
+        request_path = 'ws/Metadata/DeleteAllTags.ashx'
         
 class DeleteTagsReq(DeleteAllMetadataReq):
     """
@@ -67,7 +67,7 @@ class DeleteTagsReq(DeleteAllMetadataReq):
     tag = request.CharVariable(required=True)
     
     class Meta(DeleteAllMetadataReq.Meta):
-        request_path = '/ws/Metadata/DeleteTags.ashx'
+        request_path = 'ws/Metadata/DeleteTags.ashx'
         
 class GetTagsReq(DeleteAllMetadataReq):
     """
@@ -75,7 +75,7 @@ class GetTagsReq(DeleteAllMetadataReq):
     """
     
     class Meta(DeleteAllMetadataReq.Meta):
-        request_path = '/ws/Metadata/GetTags.ashx'
+        request_path = 'ws/Metadata/GetTags.ashx'
         
 class SetTagsReq(DeleteTagsReq):
     """
@@ -83,7 +83,7 @@ class SetTagsReq(DeleteTagsReq):
     """
     
     class Meta(DeleteTagsReq.Meta):
-        request_path = '/ws/Metadata/SetTags.ashx'
+        request_path = 'ws/Metadata/SetTags.ashx'
         
 class SearchMetadataReq(SessionTokenReq):
     """
@@ -94,7 +94,7 @@ class SearchMetadataReq(SessionTokenReq):
     searchTerm = request.CharVariable(required=True)
     maxResults = request.CharVariable(required=True)
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Metadata/SearchMetadata.ashx'
+        request_path = 'ws/Metadata/SearchMetadata.ashx'
 
 class SearchTagsReq(SessionTokenReq):
     """
@@ -104,4 +104,4 @@ class SearchTagsReq(SessionTokenReq):
     searchTerm = request.CharVariable(required=True)
     maxResults = request.CharVariable(required=True)
     class Meta(SessionTokenReq.Meta):
-        request_path = '/ws/Metadata/SearchTags.ashx'
+        request_path = 'ws/Metadata/SearchTags.ashx'

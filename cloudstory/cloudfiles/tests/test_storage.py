@@ -64,7 +64,7 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'container_info',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path=CLOUDFILES_CONTAINER
+            container=CLOUDFILES_CONTAINER
             )
 
         self.failIf(
@@ -82,7 +82,7 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'list_container_objects',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path=CLOUDFILES_CONTAINER,
+            container=CLOUDFILES_CONTAINER,
             format='json'
             )
         self.failIf(not isinstance(action.content, list), 'Content should be a list')
@@ -92,7 +92,7 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'create_container',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path=CLOUDFILES_NEW_CONTAINER,
+            container=CLOUDFILES_NEW_CONTAINER,
             )
         actionb = self.cf(
             'list_containers',
@@ -111,7 +111,7 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'delete_container',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path=CLOUDFILES_NEW_CONTAINER
+            container=CLOUDFILES_NEW_CONTAINER
             )
         self.assertEquals(action.response.get('status'),'204')
         
@@ -120,7 +120,8 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'delete_object',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path='%s/%s' % (CLOUDFILES_CONTAINER,CLOUDFILES_DELETE_OBJECT)
+            container=CLOUDFILES_CONTAINER,
+            cf_object=CLOUDFILES_DELETE_OBJECT
             )
         self.assertEquals(action.response.get('status'),'204')
         
@@ -129,9 +130,11 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'object_metadata_headers',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path='%s/%s' % (CLOUDFILES_CONTAINER,CLOUDFILES_DELETE_OBJECT)
+            cf_object=CLOUDFILES_DELETE_OBJECT,
+            container=CLOUDFILES_CONTAINER
             )
-        self.assertEquals(action.response.get('status'),'204')
+        self.assertEquals(action.response.get('status'),'200' or '204')
+
         self.failIf(
             not action.response.has_key(
                 'content-type'),
@@ -140,9 +143,12 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'object_metadata_headers',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path='%s/%s' % (CLOUDFILES_CONTAINER,CLOUDFILES_DELETE_OBJECT_B)
+            cf_object=CLOUDFILES_DELETE_OBJECT_B,
+            container=CLOUDFILES_CONTAINER
             )
-        self.assertEquals(actionb.response.get('status'),'204')
+        
+        self.assertEquals(actionb.response.get('status'),'200' or '204')
+
         self.failIf(
             not actionb.response.has_key(
                 'content-type'),
@@ -155,7 +161,8 @@ class CloudFilesAuthTestCase(unittest.TestCase):
             'object_info',
             auth_token=self.cf.auth_token,
             request_url=self.cf.storage_url,
-            request_path='%s/%s' % (CLOUDFILES_CONTAINER,CLOUDFILES_DELETE_OBJECT)
+            container=CLOUDFILES_CONTAINER,
+            cf_object=CLOUDFILES_DELETE_OBJECT
             )
         self.assertEquals(action.response.get('status'),'200')
         
