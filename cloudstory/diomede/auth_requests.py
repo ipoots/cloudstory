@@ -24,31 +24,34 @@ class CreateUserReq(ServiceReq):
     
     class Meta(ServiceReq.Meta):
         response_type = 'raw'
+        method = 'POST'
         
-
-class DeleteUserReq(DynamicServiceReq):
-    class Meta(DynamicServiceReq.Meta):
+class DeleteUserReq(ServiceReq):
+    session_token = request.CharPathVariable(1,required=True)
+    user = request.CharPathVariable(2,default_value='user')
+    class Meta(ServiceReq.Meta):
         method = 'DELETE'
         response_type = 'raw'
         
-class ChangePasswordReq(DynamicServiceReq):
+class ChangePasswordReq(ServiceReq):
     old_password = request.CharVariable(required=True,verbose_name='oldPassword')
     new_password = request.CharVariable(required=True,verbose_name='newPassword')
 
-    class Meta(DynamicServiceReq.Meta):
+    class Meta(ServiceReq.Meta):
         method = 'PUT'
         response_type = 'raw'
         
-class ResetPasswordReq(DynamicServiceReq):
-    class Meta(DynamicServiceReq.Meta):
+class ResetPasswordReq(ServiceReq):
+    class Meta(ServiceReq.Meta):
         method = 'DELETE'
         
-class LoginReq(DynamicServiceReq):
+class LoginReq(ServiceReq):
+    username = request.CharPathVariable(1,required=True)
     password = request.CharVariable(required=True)
-    class Meta(DynamicServiceReq.Meta):
+    class Meta(ServiceReq.Meta):
         method = 'GET'
         response_type = 'xml'
         
-class LogoutReq(DynamicServiceReq):
-    class Meta(DynamicServiceReq.Meta):
+class LogoutReq(ServiceReq):
+    class Meta(ServiceReq.Meta):
         method = 'DELETE'

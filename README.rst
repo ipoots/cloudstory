@@ -12,14 +12,19 @@ NIRVANIX
 ~~~~~~~~
 Authentication, Internet Media File System (IMFS), and Metadata Namespaces are included.
 
+Driver's Current Stability: STABLE
+
 RACKSPACE CLOUD FILES
 ~~~~~~~~~~~~~~~~~~~~~
 Authentication, Storage, and CDN methods are included.
+
+Driver's Current Stability: STABLE
 
 DIOMEDE
 ~~~~~~~
 Authentication (partial) included (3rd)
 
+Driver's Current Stability: NOT PRODUCTION READY
 AMAZON S3
 ~~~~~~~~~
 Coming Soon!! (4th)
