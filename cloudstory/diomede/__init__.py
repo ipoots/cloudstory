@@ -14,7 +14,7 @@ class Diomede(RestXLer):
         else:
             tt = self.login()
             self.session_token = getattr(tt.content.sessionToken, '_',None)
-            print self.session_token
+            
     def login(self):
         cs = LoginReq(
             username=self.username,
