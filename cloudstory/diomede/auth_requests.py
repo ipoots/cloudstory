@@ -36,14 +36,18 @@ class DeleteUserReq(ServiceReq):
 class ChangePasswordReq(ServiceReq):
     old_password = request.CharVariable(required=True,verbose_name='oldPassword')
     new_password = request.CharVariable(required=True,verbose_name='newPassword')
-
+    session_token = request.CharPathVariable(1,required=True)
+    password = request.CharPathVariable(2,default_value='password')
     class Meta(ServiceReq.Meta):
         method = 'PUT'
         response_type = 'raw'
         
 class ResetPasswordReq(ServiceReq):
+    username = request.CharPathVariable(1, required=True)
+    password = request.CharPathVariable(2,default_value='password')
     class Meta(ServiceReq.Meta):
         method = 'DELETE'
+        response_type = 'raw'
         
 class LoginReq(ServiceReq):
     username = request.CharPathVariable(1,required=True)
@@ -53,5 +57,7 @@ class LoginReq(ServiceReq):
         response_type = 'xml'
         
 class LogoutReq(ServiceReq):
+    session_token = request.CharPathVariable(1,required=True)
     class Meta(ServiceReq.Meta):
         method = 'DELETE'
+        response_type = 'raw'
