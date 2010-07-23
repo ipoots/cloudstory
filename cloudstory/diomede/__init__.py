@@ -1,6 +1,6 @@
 from restxl.client import RestXLer
 from auth_requests import *
-
+from download_requests import *
 class Diomede(RestXLer):
     def __init__(self,
                  username=None,
@@ -29,3 +29,5 @@ class Diomede(RestXLer):
     change_password = ChangePasswordReq
     reset_password = ResetPasswordReq
     logout = LogoutReq
+    get_download_url = GetDownloadURLReq
+    download = DownloadReq

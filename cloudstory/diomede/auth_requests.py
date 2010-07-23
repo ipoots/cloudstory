@@ -21,7 +21,6 @@ class CreateUserReq(ServiceReq):
     username = request.CharVariable(required=True)
     password = request.CharVariable(required=True)
     email = request.CharVariable(required=True)
-    
     class Meta(ServiceReq.Meta):
         response_type = 'raw'
         method = 'POST'

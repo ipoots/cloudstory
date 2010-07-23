@@ -16,23 +16,24 @@ class DiomedeAuthTestCase(unittest.TestCase):
         diomede = get_driver('diomede')
         self.di = diomede(DIOMEDE_USERNAME,DIOMEDE_PASSWORD)
         
-    def testLogin(self):
-        tt = self.di.login()
-        self.failIf(
-            getattr(
-                self.di,
-                'session_token',
-                None
-                ) == None,
-            'Session Token must be available'
-            )
+#    def testLogin(self):
+#        tt = self.di.login()
+#        self.failIf(
+#            getattr(
+#                self.di,
+#                'session_token',
+#                None
+#                ) == None,
+#            'Session Token must be available'
+#            )
         
-    def testCreateUser(self):
-        action = self.di('create_user',
-            username=DIOMEDE_NEW_USERNAME,
-            password=DIOMEDE_NEW_PASSWORD,
-            email=DIOMEDE_NEW_EMAIL)
-        self.assertEquals(action.response.get('status'),'201')
+#    def testCreateUser(self):
+#        print 'Create User'
+#        action = self.di('create_user',
+#            username=DIOMEDE_NEW_USERNAME,
+#            password=DIOMEDE_NEW_PASSWORD,
+#            email=DIOMEDE_NEW_EMAIL)
+#        self.assertEquals(action.response.get('status'),'201')
     
     def testXDeleteUser(self):
         diomede = get_driver('diomede')

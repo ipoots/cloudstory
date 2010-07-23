@@ -5,7 +5,10 @@ Created on Jul 14, 2010
 '''
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'GetDownloadURLReq',
+    'DownloadReq'
+    ]
 class GetDownloadURLReq(ServiceReq):
     max_downloads = request.CharVariable(required=True,verbose_name='maxDownloads')
     error_redirect = request.CharVariable(required=True,verbose_name='errorRedirect')
@@ -19,7 +22,7 @@ class GetDownloadURLReq(ServiceReq):
         response_type = 'xml'
         method = 'GET'
         
-class DownloadURLReq(ServiceReq):
+class DownloadReq(ServiceReq):
     session_token = request.CharPathVariable(1,required=True)
     l_file = request.CharPathVariable(2,default_value='lfile')
     file_id = request.CharPathVariable(3,required=True)
