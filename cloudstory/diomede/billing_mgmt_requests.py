@@ -5,7 +5,15 @@ Created on Jul 24, 2010
 '''
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'GetAllProductsReq',
+    'GetMyProductsReq',
+    'PurchaseProductReq',
+    'CancelProductReq',
+    'GetAllContractsReq',
+    'PurchaseContractReq',
+    'CancelContractReq'
+    ]
 class GetAllProductsReq(ServiceReq):
     products = request.CharPathVariable(1,default='products')
     
@@ -33,20 +41,20 @@ class CancelProductReq(PurchaseProductReq):
     class Meta(PurchaseProductReq.Meta):
         method = 'DELETE'
         
-class GetAllContactsReq(ServiceReq):
+class GetAllContractsReq(ServiceReq):
     contracts = request.CharPathVariable(2,default_value='contracts')
     class Meta(ServiceReq.Meta):
         method = 'GET'
         response_type = 'xml'
         
-class PurchaseContractReq(SessionTokenReq,GetAllContactsReq):
+class PurchaseContractReq(SessionTokenReq,GetAllContractsReq):
     contract_id = request.CharPathVariable(3,required=True)
     
     class Meta(SessionTokenReq.Meta):
         method = 'PUT'
         response_type = 'xml'
         
-class CancelContract(PurchaseContractReq):
+class CancelContractReq(PurchaseContractReq):
     class Meta(PurchaseContractReq):
         method = 'DELETE'
         response_type = 'raw'

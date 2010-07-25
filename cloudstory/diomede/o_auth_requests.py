@@ -6,6 +6,10 @@ Created on Jul 14, 2010
 from restxl import request
 from diomede_requests import ServiceReq
 
+__all__ = [
+    'CreateOAuthReq',
+    'GetOAuthSecretKeyReq'
+    ]
 class CreateOAuthReq(ServiceReq):
     username = request.CharVariable(required=True)
     password = request.CharVariable(required=True)
@@ -16,7 +20,7 @@ class CreateOAuthReq(ServiceReq):
         method = 'POST'
         response_type = 'xml'
         
-class GetOAuthSecretKey(ServiceReq):
+class GetOAuthSecretKeyReq(ServiceReq):
     #Path Variables
     oauth = request.CharPathVariable(1,default_value='oauth')
     oauth_id = request.CharPathVariable(1,required=True)

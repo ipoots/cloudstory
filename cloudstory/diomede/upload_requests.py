@@ -6,6 +6,10 @@ Created on Jul 14, 2010
 from restxl import request
 from diomede_requests import ServiceReq
 
+__all__ = [
+    'CreateFileReq',
+    'UploadFileReq'
+    ]
 class CreateFileReq(ServiceReq):
     #Path Variables
     session_token = request.CharPathVariable(1,required=True)

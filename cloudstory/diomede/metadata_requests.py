@@ -5,7 +5,16 @@ Created on Jul 23, 2010
 '''
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'CreateFileMetaDataReq',
+    'GetFileMetaDataReq',
+    'SetFileMetadataReq',
+    'DeleteFileMetadataReq',
+    'CreateMetaDataReq',
+    'GetMetaDataReq',
+    'EditMetaDataReq',
+    'DeleteMetaDataReq'
+    ]
 class CreateFileMetaDataReq(ServiceReq):
     #Path Variables
     session_token = request.CharPathVariable(1,required=True)
@@ -20,7 +29,7 @@ class CreateFileMetaDataReq(ServiceReq):
         method = 'POST'
         response_type = 'xml'
         
-class GetFileMetaData(ServiceReq):
+class GetFileMetaDataReq(ServiceReq):
     #Path Variables
     session_token = request.CharPathVariable(1,required=True)
     metadata = request.CharPathVariable(2,default_value='metadata')

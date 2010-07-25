@@ -6,7 +6,12 @@ Created on Jul 22, 2010
 
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'SearchFilesReq',
+    'SearchFilesTotalReq',
+    'DeleteFileReq',
+    'RenameOrDeleteFileReq'
+    ]
 class SearchFilesReq(ServiceReq):
     #Path Variables
     session_token = request.CharPathVariable(1,required=True)

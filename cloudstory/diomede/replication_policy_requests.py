@@ -5,7 +5,15 @@ Created on Jul 23, 2010
 '''
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'CreateRepPolicyReq',
+    'GetRepPoliciesReq',
+    'EditRepPolicyReq',
+    'DeleteRepPolicyReq',
+    'SetDefaultRepPolicyReq',
+    'GetDefaultRepPolicyReq',
+    'SetRepPolicyReq'
+    ]
 class CreateRepPolicyReq(ServiceReq):
     #Path Variables
     session_token = request.CharPathVariable(1,required=True)

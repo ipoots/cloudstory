@@ -5,7 +5,12 @@ Created on Jul 23, 2010
 '''
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'ReplicateFileReq',
+    'UnReplicateFileReq',
+    'GetPhysicalFileReq',
+    'GetStorageTypesReq'           
+    ]
 class ReplicateFileReq(ServiceReq):
     #Path variables
     session_token = request.CharPathVariable(1,required=True)

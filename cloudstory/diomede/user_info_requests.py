@@ -6,6 +6,14 @@ Created on Jul 24, 2010
 from restxl import request
 from diomede_requests import ServiceReq
 
+__all__ = [
+    'SetUserInfoReq',
+    'DeleteUserInfoReq',
+    'GetEmailAddressReq',
+    'AddEmailAddressReq',
+    'DeleteEmailAddressReq',
+    'SetPrimeEmailReq'
+    ]
 class SessionTokenReq(ServiceReq):
     session_token = request.CharPathVariable(1,required=True)
 

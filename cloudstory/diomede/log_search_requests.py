@@ -5,7 +5,14 @@ Created on Jul 24, 2010
 '''
 from restxl import request
 from diomede_requests import ServiceReq
-
+__all__ = [
+    'SearchLoginLogReq',
+    'SearchInvoiceLogReq',
+    'SearchPaymentLogReq',
+    'SearchFilesTotalLogReq',
+    'SearchDownloadLogReq',
+    'SearchUploadLogReq'
+    ]
 class SessionLogsReq(ServiceReq):
     session_token = request.CharPathVariable(1,required=True)
     logs = request.CharPathVariable(2,default_value='logs')
@@ -36,7 +43,7 @@ class SearchFilesTotalLogReq(OffsetPagesizeReq):
     lfile = request.CharPathVariable(3,default_value='lfile')
     totals = request.CharPathVariable(4,default_value='totals')
     
-class SeachDownloadLogReq(OffsetPagesizeReq):
+class SearchDownloadLogReq(OffsetPagesizeReq):
     download = request.CharPathVariable(3,default_value='download')
     file_id = request.CharVariable(required=True,verbose_name='fileid')
     token = request.CharVariable()
