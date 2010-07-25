@@ -10,6 +10,7 @@ from replication_policy_requests import *
 from replication_requests import *
 from upload_requests import *
 from user_info_requests import *
+
 class Diomede(RestXLer):
     def __init__(self,
                  username=None,
